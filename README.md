@@ -1,3 +1,7 @@
+## Install on my ABT Node
+
+[![Install on my ABT Node](https://raw.githubusercontent.com/blocklet/development-guide/main/assets/install_on_abtnode.svg)](https://install.arcblock.io/?action=blocklet-install&meta_url=)
+
 # Dependency
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).  
