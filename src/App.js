@@ -16,7 +16,7 @@ class App extends Component {
                 window.r = this;
             })()
         } else {
-            console.log('fuck')
+            console.log('fffff')
         }
     }
 

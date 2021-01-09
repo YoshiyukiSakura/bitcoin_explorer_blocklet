@@ -1,0 +1,43 @@
+name: bitcoin_explorer
+description: a coding test
+group: static
+main: build
+author:
+  name: yoshiyuki
+specVersion: 1.0.1
+version: 1.0.3
+files:
+  - blocklet.md
+  - screenshots
+  - build
+  - blocklet_scripts/post-install.js
+  - blocklet_scripts/pre-stop.js
+  - blocklet_scripts/pre-install.js
+  - blocklet_scripts/pre-start.js
+  - blocklet_scripts/pre-uninstall.js
+interfaces:
+  - type: web
+    name: publicUrl
+    path: /build/
+    prefix: '*'
+    port: BLOCKLET_PORT
+    protocol: http
+did: z8ia2jQoDYq9mx7eNcsTUUNHeBb25LknMw9Fy
+community: ''
+documentation: ''
+homepage: ''
+license: ''
+timeout:
+  start: 60
+requirements:
+  abtnode: '>=1.1.0'
+  os: '*'
+  cpu: '*'
+environments: []
+screenshots: []
+scripts:
+  preInstall: node blocklet_scripts/pre-install.js
+  postInstall: node blocklet_scripts/post-install.js
+  preStart: node blocklet_scripts/pre-start.js
+  preStop: node blocklet_scripts/pre-stop.js
+  preUninstall: node blocklet_scripts/pre-uninstall.js
