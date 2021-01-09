@@ -1,61 +1,54 @@
-import './App.css';
-import React, {Component} from 'react'
-import axios from 'axios'
+import { Component } from 'react';
+import axios from 'axios';
+import { Form } from "./components/form";
+import { Table } from "./components/table";
+import './assets/style/index.scss';
 
-const querystring = require('querystring');
+export class App extends Component {
 
-class App extends Component {
-    //if requested with a hash, then show data
-    //if not, then show basic query page
-    componentDidMount() {
-        const query = querystring.decode(window.location.search.replace('?', ''))
-        if (query.hash) {
-            (async () => {
-                var {data: block} = await axios({method: 'get', url: 'http://127.0.0.1:3001/', params: query});
-                this.setState({block: block})
-                window.r = this;
-            })()
-        } else {
-            console.log('fffff')
-        }
-    }
+  constructor() {
+    super();
 
-    state = {
-        searching: "",
-        block: {brief_info: []},
-    }
+    this.state = {
+      txData: [],
+      loading: true
+    };
+  }
 
-    searchingChange = (e) => {
-        this.setState({searching: e.target.value});
-        console.log(this.state.searching)
-    }
+  componentDidMount () {
+    this.getData()
+  }
 
-    search = async (e) => {
-        // let get_block_config = {method: 'get', url: 'https://blockstream.info/api/tx/' + this.state.searching};
-        // let {data: tx_info} = await axios(get_block_config);
-    }
+  getData () {
+    let config = {
+      method: 'get',
+      url: 'https://blockchain.info/rawblock/00000000000000000007878ec04bb2b2e12317804810f4c26033585b3f81ffaa?cors=true',
+    };
+    axios(config)
+      .then((res) => {
+        let data = res.data
+        this.setState({
+          loading: false,
+          txData: data.tx,
+          data,
+        });
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }
 
-    render() {
-        return (
-            <div className="App">
-                <input style={{width: "310px", height: "43px"}} onChange={this.searchingChange} type="text"
-                       placeholder="Please input bitcoin transaction hash"/>
-                <button onClick={this.search}>search</button>
-                <table>
-                    <tbody>
-                    {
-                        this.state.block.brief_info.map((info) => {
-                            return <tr style={{borderBottom:"1px solid black"}} key={info[0]}>
-                                <td style={{"width": "200px"}}>{info[0]}</td>
-                                <td style={{"width": "500px"}}>{info[1]}</td>
-                            </tr>
-                        })
-                    }
-                    </tbody>
-                </table>
-            </div>
-        )
-    }
+  render () {
+    let { txData, data, loading } = this.state;
+    return loading ? (
+      <div className="App loading">loading...</div>
+    ) : (
+      <div className="App">
+        <Form data={data}></Form>
+        <Table txData={txData}></Table>
+      </div>
+    )
+  }
 }
 
 export default App;

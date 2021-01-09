@@ -1,0 +1,92 @@
+.co-table-container {
+  margin-bottom: 100px;
+  box-sizing: border-box;
+  font-size: 14px;
+  line-height: 20px;
+  .table-header {
+    padding: 1rem 0px;
+    color: rgb(53, 63, 82);
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: rgb(53, 63, 82);
+  }
+  .loading {
+    line-height: 100px;
+    text-align: center;
+  }
+  .table-item-box {
+    margin-bottom: 30px;
+    padding: 10px;
+    box-sizing: border-box;
+    border-bottom: 1px solid #eee;
+    &:hover {
+      background: #f0f2f3;
+    }
+    .row-item {
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      padding: 10px 0;
+    }
+    .left, .right {
+      flex: 0 0 50%;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      width: 100%;
+      overflow: hidden;
+    }
+    .name {
+      display: inline-block;
+      width: 100px;
+      // height: 17px;
+      // line-height: 17px;
+      color: rgb(103, 113, 133);
+    }
+    .tansfer {
+      display: inline-block;
+      vertical-align: text-top;
+      width: calc(100% - 100px);
+    }
+    .addr {
+      color: rgb(12, 108, 242);
+    }
+    .text {
+      color: rgb(53, 63, 82);
+    }
+    .total-value {
+      color: rgb(0, 135, 90);
+      cursor: pointer;
+      padding: 0.25rem;
+      background: rgb(209, 240, 219);
+      border-width: 1px;
+      border-style: solid;
+      border-color: rgb(209, 240, 219);
+      border-image: initial;
+      border-radius: 0.25rem;
+    }
+    .fr {
+      float: right;
+    }
+  }
+  .btn-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    .btn {
+      width: 30px;
+      height: 30px;
+      line-height: 30px;
+      text-align: center;
+      border: 1px solid #eee;
+      cursor: pointer;
+      &.current {
+        background: rgb(12, 108, 242);
+        color: #fff;
+      }
+      &:hover {
+        color: #333;
+        background: #999;
+      }
+    }
+  }
+}
